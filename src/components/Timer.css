@@ -1,9 +1,7 @@
 .timer-section {
     padding: var(--spacing-xl) 0;
-    background: transparent;
+    background-color: #fafafa;
     text-align: center;
-    position: relative;
-    z-index: 1;
 }
 
 .timer-header {
@@ -16,7 +14,6 @@
 
 .timer-icon {
     color: var(--color-primary);
-    filter: drop-shadow(0 0 5px var(--color-primary));
 }
 
 .timer-grid {
@@ -27,22 +24,16 @@
 }
 
 .time-unit {
-    background-color: rgba(5, 11, 20, 0.8);
-    /* Dark glass */
+    background-color: white;
     padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    /* Sharper */
+    border-radius: 8px;
     min-width: 100px;
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    backdrop-filter: blur(5px);
 }
 
 .time-unit:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
-    border-color: var(--color-primary);
 }
 
 .time-value {
@@ -51,16 +42,14 @@
     font-weight: 700;
     color: var(--color-primary);
     line-height: 1;
-    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
 }
 
 .time-label {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--color-text);
+    letter-spacing: 1px;
+    color: #888;
     margin-top: var(--spacing-sm);
-    font-family: var(--font-sans);
 }
 
 @media (max-width: 768px) {

@@ -9,7 +9,7 @@ const Letter = () => {
                 <div className="letter-container">
                     <div className="letter-header">
                         <Mail size={32} className="letter-icon" />
-                        <h2>Incoming Transmission</h2>
+                        <h2>A Message For You</h2>
                     </div>
                     <div className="paper">
                         <div className="lines">

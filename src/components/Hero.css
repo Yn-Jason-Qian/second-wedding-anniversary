@@ -4,28 +4,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    /* Particles handle the background */
+    background: white;
     position: relative;
-    overflow: hidden;
 }
 
 .hero-content {
     text-align: center;
     animation: fadeIn 2s ease-out;
     padding: var(--spacing-md);
-    background: rgba(5, 11, 20, 0.6);
-    border: 1px solid rgba(0, 243, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border-radius: var(--radius-lg);
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
 }
 
 .heart-icon-wrapper {
     margin-bottom: var(--spacing-md);
-    /* Replace generic float with a tech hover effect */
     animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px var(--color-accent));
 }
 
 .heart-icon {
@@ -33,23 +24,19 @@
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin-bottom: var(--spacing-sm);
-    color: var(--color-primary);
+    color: var(--color-text);
     opacity: 0;
-    animation: glitchIn 1s ease-out 0.5s forwards;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
+    animation: slideUp 1s ease-out 0.5s forwards;
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--color-text);
+    font-size: 1.5rem;
+    color: #666;
     opacity: 0;
     animation: slideUp 1s ease-out 1s forwards;
     font-family: var(--font-sans);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
 }
 
 .scroll-indicator {
@@ -63,19 +50,14 @@
     gap: var(--spacing-sm);
     opacity: 0;
     animation: fadeIn 1s ease-out 2s forwards;
-    color: var(--color-primary);
-    font-family: var(--font-serif);
-    font-size: 0.8rem;
-    letter-spacing: 2px;
+    color: #888;
 }
 
 .arrow {
     font-size: 1.5rem;
     animation: bounce 2s infinite;
-    text-shadow: 0 0 10px var(--color-primary);
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -129,38 +111,8 @@
     }
 }
 
-@keyframes glitchIn {
-    0% {
-        opacity: 0;
-        transform: skewX(-20deg);
-    }
-
-    20% {
-        opacity: 1;
-        transform: skewX(20deg);
-    }
-
-    40% {
-        transform: skewX(-10deg);
-    }
-
-    60% {
-        transform: skewX(10deg);
-    }
-
-    80% {
-        transform: skewX(-5deg);
-    }
-
-    100% {
-        opacity: 1;
-        transform: skewX(0);
-    }
-}
-
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 }

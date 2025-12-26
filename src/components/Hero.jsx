@@ -10,9 +10,9 @@ const Hero = () => {
                     <Heart className="heart-icon" size={48} fill="var(--color-accent)" />
                 </div>
                 <h1 className="hero-title">Happy 2nd Anniversary</h1>
-                <p className="hero-subtitle">Mission Duration: Two Years // Status: Forever</p>
+                <p className="hero-subtitle">Two years of love, laughter, and forever to go.</p>
                 <div className="scroll-indicator">
-                    <span>INITIALIZE CELEBRATION</span>
+                    <span>Scroll to celebrate</span>
                     <div className="arrow">↓</div>
                 </div>
             </div>
