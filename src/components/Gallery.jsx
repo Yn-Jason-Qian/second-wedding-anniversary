@@ -87,25 +87,31 @@ const Polaroid = ({ memory }) => {
         setCurrentIndex((prev) => (prev - 1 + memory.images.length) % memory.images.length);
     };
 
-    const currentImage = memory.images[currentIndex];
-    // Check if it's a color code or an image path
-    const isColor = currentImage.startsWith('#');
-
     return (
         <div className="polaroid">
             <div
                 className="photo-placeholder"
-                style={{
-                    backgroundColor: isColor ? currentImage : 'transparent',
-                    backgroundImage: isColor ? 'none' : `url(${currentImage})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    touchAction: 'pan-y' // Allow vertical scroll, capture horizontal
-                }}
                 onTouchStart={onTouchStart}
                 onTouchMove={onTouchMove}
                 onTouchEnd={onTouchEnd}
+                style={{ touchAction: 'pan-y' }}
             >
+                {memory.images.map((img, idx) => {
+                    const isColor = img.startsWith('#');
+                    return (
+                        <div
+                            key={idx}
+                            className={`slide ${idx === currentIndex ? 'active' : ''}`}
+                            style={{
+                                backgroundColor: isColor ? img : 'transparent',
+                                backgroundImage: isColor ? 'none' : `url(${img})`,
+                            }}
+                        >
+                            {isColor && <span>Photo {idx + 1}</span>}
+                        </div>
+                    );
+                })}
+
                 {memory.images.length > 1 && (
                     <>
                         <button className="nav-btn prev" onClick={prevImage}>
@@ -124,7 +130,6 @@ const Polaroid = ({ memory }) => {
                         </div>
                     </>
                 )}
-                {isColor && <span>Photo {currentIndex + 1}</span>}
             </div>
             <div className="caption">
                 <p className="caption-text">{memory.caption}</p>
