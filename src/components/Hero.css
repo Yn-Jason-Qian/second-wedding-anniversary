@@ -4,7 +4,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-bg) 0%, #fff0f5 100%);
+    background: transparent;
+    /* Particles handle the background */
     position: relative;
     overflow: hidden;
 }
@@ -13,11 +14,18 @@
     text-align: center;
     animation: fadeIn 2s ease-out;
     padding: var(--spacing-md);
+    background: rgba(5, 11, 20, 0.6);
+    border: 1px solid rgba(0, 243, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
 }
 
 .heart-icon-wrapper {
     margin-bottom: var(--spacing-md);
+    /* Replace generic float with a tech hover effect */
     animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px var(--color-accent));
 }
 
 .heart-icon {
@@ -25,11 +33,13 @@
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: var(--spacing-sm);
     color: var(--color-primary);
     opacity: 0;
-    animation: slideUp 1s ease-out 0.5s forwards;
+    animation: glitchIn 1s ease-out 0.5s forwards;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
 }
 
 .hero-subtitle {
@@ -37,6 +47,9 @@
     color: var(--color-text);
     opacity: 0;
     animation: slideUp 1s ease-out 1s forwards;
+    font-family: var(--font-sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .scroll-indicator {
@@ -50,11 +63,16 @@
     gap: var(--spacing-sm);
     opacity: 0;
     animation: fadeIn 1s ease-out 2s forwards;
+    color: var(--color-primary);
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
 }
 
 .arrow {
     font-size: 1.5rem;
     animation: bounce 2s infinite;
+    text-shadow: 0 0 10px var(--color-primary);
 }
 
 /* Animations */
@@ -108,6 +126,35 @@
 
     60% {
         transform: translateY(-5px);
+    }
+}
+
+@keyframes glitchIn {
+    0% {
+        opacity: 0;
+        transform: skewX(-20deg);
+    }
+
+    20% {
+        opacity: 1;
+        transform: skewX(20deg);
+    }
+
+    40% {
+        transform: skewX(-10deg);
+    }
+
+    60% {
+        transform: skewX(10deg);
+    }
+
+    80% {
+        transform: skewX(-5deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: skewX(0);
     }
 }
 

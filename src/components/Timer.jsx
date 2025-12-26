@@ -37,7 +37,7 @@ const Timer = () => {
             <div className="container">
                 <div className="timer-header">
                     <Clock className="timer-icon" size={32} />
-                    <h2>Time We've Spent Loving Each Other</h2>
+                    <h2>Mission Time Elapsed</h2>
                 </div>
 
                 <div className="timer-grid">

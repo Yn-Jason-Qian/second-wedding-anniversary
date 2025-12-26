@@ -145,8 +145,8 @@ const Gallery = () => {
             <div className="container">
                 <div className="section-header">
                     <Camera className="icon" size={32} />
-                    <h2>Our Sweet Memories</h2>
-                    <p>Highlights from our journey so far</p>
+                    <h2>Memory Database</h2>
+                    <p>Accessing Archives...</p>
                 </div>
 
                 <div className="gallery-grid">

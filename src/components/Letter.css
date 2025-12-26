@@ -1,7 +1,6 @@
 .letter-section {
     padding: var(--spacing-xl) 0;
-    background-color: #fff0f5;
-    /* Light pink background */
+    background-color: transparent;
     display: flex;
     justify-content: center;
 }
@@ -10,89 +9,127 @@
     max-width: 800px;
     margin: 0 auto;
     position: relative;
+    width: 100%;
 }
 
 .letter-header {
     text-align: center;
     margin-bottom: var(--spacing-lg);
-    color: var(--color-text);
+    color: var(--color-primary);
 }
 
 .letter-icon {
-    color: var(--color-accent);
+    color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
+    filter: drop-shadow(0 0 5px var(--color-primary));
 }
 
 .paper {
-    background-color: #fff;
+    background-color: rgba(5, 11, 20, 0.9);
     padding: var(--spacing-xl);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
     position: relative;
-    border-radius: 2px;
-    background-image: linear-gradient(#f8f8f8 1px, transparent 1px);
-    background-size: 100% 2rem;
-    /* Lined paper effect */
-    line-height: 2rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 4px;
+    background-image:
+        linear-gradient(transparent 98%, rgba(0, 243, 255, 0.1) 99%),
+        linear-gradient(90deg, transparent 98%, rgba(0, 243, 255, 0.1) 99%);
+    background-size: 20px 20px;
+    /* Grid background */
+    color: var(--color-text);
+    backdrop-filter: blur(10px);
 }
 
-.paper::before {
+/* Scanning line effect */
+.paper::after {
     content: '';
     position: absolute;
     top: 0;
-    left: 40px;
-    height: 100%;
-    border-right: 1px solid #ffccbc;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    animation: scan 4s linear infinite;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
 }
 
 .greeting {
     font-family: var(--font-serif);
     font-weight: 700;
-    font-style: italic;
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    color: var(--color-text);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .body-text {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
+    font-family: 'Courier New', monospace;
+    /* Terminal vibe */
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
     margin-bottom: 2rem;
-    color: #4a4a4a;
+    color: var(--color-text);
+    line-height: 1.8;
 }
 
 .closing {
     font-family: var(--font-serif);
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    color: var(--color-primary);
 }
 
 .signature {
-    font-family: 'Great Vibes', cursive;
-    /* Fallback will be cursive/serif */
-    font-family: var(--font-serif);
+    font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
-    font-style: italic;
-    color: var(--color-accent);
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 5px var(--color-secondary);
 }
 
 .seal {
     position: absolute;
     bottom: 20px;
     right: 40px;
-    width: 60px;
-    height: 60px;
-    background-color: var(--color-accent);
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--color-accent);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px var(--color-accent);
     transform: rotate(-15deg);
+    background: rgba(255, 0, 85, 0.1);
 }
 
 .heart-seal {
-    color: #fff;
+    color: var(--color-accent);
     font-size: 1.5rem;
 }
 
@@ -100,10 +137,5 @@
 @media (max-width: 768px) {
     .paper {
         padding: var(--spacing-md);
-        background-size: 100% 2rem;
-    }
-
-    .paper::before {
-        left: 20px;
     }
 }
