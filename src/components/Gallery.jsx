@@ -45,14 +45,45 @@ const memories = [
 
 const Polaroid = ({ memory }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
+
+    // Minimum swipe distance (in px)
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) {
+            nextImage();
+        }
+        if (isRightSwipe) {
+            prevImage();
+        }
+    };
 
     const nextImage = (e) => {
-        e.stopPropagation();
+        if (e) e.stopPropagation();
+        if (memory.images.length <= 1) return;
         setCurrentIndex((prev) => (prev + 1) % memory.images.length);
     };
 
     const prevImage = (e) => {
-        e.stopPropagation();
+        if (e) e.stopPropagation();
+        if (memory.images.length <= 1) return;
         setCurrentIndex((prev) => (prev - 1 + memory.images.length) % memory.images.length);
     };
 
@@ -68,8 +99,12 @@ const Polaroid = ({ memory }) => {
                     backgroundColor: isColor ? currentImage : 'transparent',
                     backgroundImage: isColor ? 'none' : `url(${currentImage})`,
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center'
+                    backgroundPosition: 'center',
+                    touchAction: 'pan-y' // Allow vertical scroll, capture horizontal
                 }}
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
             >
                 {memory.images.length > 1 && (
                     <>
